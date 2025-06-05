@@ -1,28 +1,18 @@
-# id - 139004822
-# Создание и заполнение кортежа значениями весов отдельных роботов
-weight: tuple = tuple(int(number) for number in input().split())
-# Максимальное значение грузоподъёмности
-limit: int = int(input())
-# Сортировка кортежа
-sorted(weight)
-# Инициализация результирующей переменной
-result: int = 0
-# Объявление указателей
-left_pointer: int = 0
-right_pointer: int = len(weight) - 1
-# Основной цикл программы, работающий до того, пока 2 указателя не встретятся
-while left_pointer <= right_pointer:
-    # Если сумма минимального и максимального элементов кортежа <= limit,
-    # указатели смещаются на 1 элемент ближе к середине массива
-    # и результат увеличивается на 1
-    if weight[left_pointer] + weight[right_pointer] <= limit:
-        left_pointer += 1
+# id - 139092512
+def min_count_platform(weight: tuple, limit: int):
+    result: int = 0
+    left_pointer: int = 0
+    right_pointer: int = len(weight) - 1
+    while left_pointer <= right_pointer:
+        if weight[left_pointer] + weight[right_pointer] <= limit:
+            left_pointer += 1
         right_pointer -= 1
-        result += 1
-    # Иначе только правый указатель смещается на 1 элемент к середине массива
-    # и значение результата увеличивается на 1 
-    else:
-        right_pointer -= 1
-        result += 1
+        result += 1 
+    return result
 
-print(result)
+
+if __name__ == '__main__':
+    weight: tuple = tuple(sorted(int(number) for number in input().split()))
+    
+    limit: int = int(input())
+    print(min_count_platform(weight, limit))
