@@ -1,5 +1,7 @@
-# id - 139092512
+
+# id - 139004822
 def min_count_platform(weight: tuple, limit: int):
+    weight = tuple(sorted(weight))
     result: int = 0
     left_pointer: int = 0
     right_pointer: int = len(weight) - 1
@@ -12,7 +14,6 @@ def min_count_platform(weight: tuple, limit: int):
 
 
 if __name__ == '__main__':
-    weight: tuple = tuple(sorted(int(number) for number in input().split()))
-    
+    weight: tuple = tuple(int(number) for number in input().split())
     limit: int = int(input())
     print(min_count_platform(weight, limit))
